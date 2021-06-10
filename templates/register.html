@@ -1,0 +1,29 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <center>  
+ <head>
+   <h1 style="color: grey;">User Registration</h1>
+  {% load static %}
+  <link rel = "stylesheet" type="text/css" href = "{% static  'css\style.css' %}">
+   <meta name="viewsport" content="width=device-witdth",
+   initial-scale="1.0">
+   <title>Registeration</title>
+ </head>
+<body style="background-color:cornsilk;">
+  <form  method ="POST">
+ {% csrf_token %}
+{{form}}
+<br>
+<br>
+  <input type="submit" value="submit">
+  </form>
+  {% if messages %}
+  {% for result in messages %}
+  <b style="color: darkgreen;">{{result}}</b>
+  {% endfor %}
+  {% endif %}
+  
+<p>Already have an account? <a href="/login/">Sign in</a>.</p>
+</body>
+</center>
+  </html>

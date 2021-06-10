@@ -1,0 +1,136 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body {
+  margin: 0;
+  font-family: "Lato", sans-serif;
+}
+
+
+.content
+{
+
+ background-color:white;
+}
+
+
+
+
+.sidebar {
+  margin: 0;
+  padding: 0;
+  width: 200px;
+  background-color:#A0d468;
+  position: fixed;
+  height: 100%;
+  overflow: auto;
+}
+
+.sidebar a {
+  display: block;
+  color: white;
+  padding: 16px;
+  text-decoration: none;
+}
+ 
+.sidebar a.active {
+  background-color: #4FC1EF;
+  color: white;
+}
+
+.sidebar a:hover:not(.active) {
+  background-color: grey;
+  color: white;
+}
+
+div.content {
+  margin-left: 200px;
+  padding: 1px 16px;
+  height: 1000px;
+}
+
+@media screen and (max-width: 700px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+  .sidebar a {float: left;}
+  div.content {margin-left: 0;}
+}
+
+@media screen and (max-width: 400px) {
+  .sidebar a {
+    text-align: center;
+    float: none;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="sidebar">
+  <a class="active" href="/dashboard1/{{user_id}}">Dashboard</a>
+  <a href= "/create/{{user.id}}">Add Expense</a>
+  <a href="/index/{{user.id}}">View Expense</a>
+  <a href="/pie/{{user.id}}">Expense Report</a>
+
+<a href="#contact">User Profile</a>
+  <a href="/login/"onclick ="return confirm('Are you sure you want to Logout')">Logout</a>
+
+
+</div>
+
+
+<div class="content">
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Edit and Update Page</title>
+</head>
+<body>
+     <center>
+         <h1 style="color: grey;">Edit and Update Expense</h1>
+         
+         
+        <form method="POST" action="/Update/{{Exp.id}}">
+        {% csrf_token %}
+        <table border="1">
+            <tr>
+                <td>Description</td>
+                <td><input type="text" name ="des" value="{{Exp.des}}"></td>
+            </tr>
+            <tr>
+                <td>Amount</td>
+                <td><input type="text" name="amt" value="{{Exp.amt}}"></td>
+            </tr>
+            <tr>
+                <td>Date</td>
+                <td><input type="text" name="date" value="{{Exp.date}}"></td>
+            </tr>
+            <tr>
+                <td>Payment</td>
+                <td><input type="text" name="pay" value="{{Exp.pay}}"></td>
+            </tr>
+        </table>
+        <input type="submit" value="Update expense Record">
+    </hr>
+    </form>
+    {% if messages %}
+  {% for result in messages %}
+  <b style="color: darkgreen;">{{result}}</b>
+  {% endfor %}
+  {% endif %}
+    
+    </center>
+</body>
+</html>

@@ -1,0 +1,43 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <body style="background-color:cornsilk;"></body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewsport" content="width",
+  initial-scale=1.0>
+
+  <title>User Login</title>
+<center>
+</head>
+<h1 style="color: grey;">Expense Tracker</h1>
+<p>User Login</p>
+<br>
+<br>
+
+
+
+  {% load static %}
+  <link rel = "stylesheet" type="text/css" href = "{% static  'css\style.css' %}">
+<form  method="post">
+  {% csrf_token %}
+  {{form.as_p}}
+  <input type="submit" value="Login" >
+</form>
+
+
+
+
+<button type="submit" class="forgotpwdbtn">Forgot Password</button>
+
+  <div class="container signin">
+    <br>
+  
+    <p>New user? <a href="/register/">Register</a>.</p>
+    
+  </div>
+
+  
+
+</center>
+</html>
